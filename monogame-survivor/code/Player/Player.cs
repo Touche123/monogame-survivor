@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace monogame_survivor
 {
-    public class Player
+    internal class Player : SceneComponent
     {
         public Vector2 Position;
         private Vector2 Direction;
@@ -20,7 +20,6 @@ namespace monogame_survivor
             weapons = new List<IWeapon>();
             weapons.Add(new SimpleGun());
             activeWeapon = weapons[0];
-            Graphics = Globals.Content.Load<Texture2D>("ball");
             Position = new Vector2(0, 0);
         }
 
@@ -29,7 +28,12 @@ namespace monogame_survivor
             activeWeapon.Fire();
         }
 
-        public void Update(GameTime gameTime)
+        internal override void LoadContent(ContentManager Content)
+        {
+            Graphics = Content.Load<Texture2D>("ball");
+        }
+
+        internal override void Update(GameTime gameTime)
         {
             var kstate = Keyboard.GetState();
 
@@ -60,6 +64,11 @@ namespace monogame_survivor
             Position.X += Direction.X * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             Position.Y += Direction.Y * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             activeWeapon.Update(gameTime);
+        }
+
+        internal override void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(Graphics, Position, Color.White);
         }
     }
 }
