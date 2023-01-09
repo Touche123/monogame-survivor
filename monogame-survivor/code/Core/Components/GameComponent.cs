@@ -4,10 +4,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace monogame_survivor
 {
-    internal abstract class SceneComponent
+    internal abstract class GameComponent
     {
-        internal abstract void LoadContent(ContentManager Content);
-        internal abstract void Update(GameTime gameTime);
+        public int ZOrder = 0;
         internal abstract void Draw(SpriteBatch spriteBatch);
+        internal abstract void LoadContent(ContentManager content);
+        internal abstract void Update(GameTime gameTime);
     }
 }

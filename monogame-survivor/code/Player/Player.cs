@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace monogame_survivor
 {
-    internal class Player : SceneComponent
+    internal class Player : GameComponent
     {
         public Vector2 Position;
         private Vector2 Direction;
@@ -17,6 +17,7 @@ namespace monogame_survivor
         public Texture2D Graphics;
         public Player()
         {
+            ZOrder = 1;
             weapons = new List<IWeapon>();
             weapons.Add(new SimpleGun());
             activeWeapon = weapons[0];
@@ -30,7 +31,7 @@ namespace monogame_survivor
 
         internal override void LoadContent(ContentManager Content)
         {
-            Graphics = Content.Load<Texture2D>("ball");
+            Graphics = Content.Load<Texture2D>("Tiles/tile0");
         }
 
         internal override void Update(GameTime gameTime)

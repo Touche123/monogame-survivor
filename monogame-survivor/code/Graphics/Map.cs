@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace monogame_survivor
 {
-    internal class Map : SceneComponent
+    internal class Map : GameComponent
     {
         private readonly Point MAP_SIZE = new(6, 4);
         private Point TILE_SIZE;
@@ -15,8 +15,8 @@ namespace monogame_survivor
 
         public Map()
         {
+            ZOrder = 0;
             tiles = new Tile[MAP_SIZE.X, MAP_SIZE.Y];
-
         }
 
         internal override void Draw(SpriteBatch spriteBatch)
