@@ -9,7 +9,7 @@ namespace monogame_survivor
         private static KeyboardState lastKeyboardState;
         private static Vector2 direction;
         public static Vector2 Direction => direction;
-        public static Vector2 MousePosition => Mouse.GetState().Position.ToVector2();
+        public static Point MousePosition => Mouse.GetState().Position;
         public static bool MouseClicked { get; private set; }
         public static bool MouseRightClicked { get; private set; }
         public static bool MouseLeftDown { get; private set; }
